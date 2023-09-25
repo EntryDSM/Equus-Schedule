@@ -16,3 +16,9 @@ spring:
         format_sql: ${FORMAT_SQL:true}
     open-in-view: false
     database: mysql
+    
+auth:
+  jwt:
+    secretKey: ${JWT_SECRET_KEY:dGVzdA==}
+    header: ${JWT_HEADER:Authorization}
+    prefix: ${JWT_PREFIX:Bearer}
