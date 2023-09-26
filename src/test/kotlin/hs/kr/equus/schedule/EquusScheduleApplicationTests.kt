@@ -9,5 +9,4 @@ class EquusScheduleApplicationTests {
     @Test
     fun contextLoads() {
     }
-
 }
