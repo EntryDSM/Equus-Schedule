@@ -1,0 +1,1 @@
+[90m/Users/kimseongwon/Desktop/gitHub/Equus-Schedule/src/test/kotlin/hs/kr/equus/schedule/[0mEquusScheduleApplicationTests.kt[90m:[0m12[90m:1:[0m Unexpected blank line(s) before "}" [90m(no-blank-line-before-rbrace)[0m
