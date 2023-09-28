@@ -24,7 +24,6 @@ class GlobalExceptionFilter(
         try {
             filterChain.doFilter(request, response)
         } catch (e: EquusException) {
-            println(e.errorCode)
             Sentry.captureException(e)
             writerErrorCode(response, e.errorCode)
         } catch (e: Exception) {
