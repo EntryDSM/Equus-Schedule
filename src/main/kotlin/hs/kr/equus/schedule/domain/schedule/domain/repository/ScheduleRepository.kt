@@ -5,7 +5,7 @@ import hs.kr.equus.schedule.domain.schedule.domain.types.Type
 import org.springframework.data.jpa.repository.JpaRepository
 import java.util.*
 
-interface ScheduleRepository : JpaRepository<Schedule, Long> {
+interface ScheduleRepository : JpaRepository<Schedule, Int> {
     fun findAllBy(): List<Schedule>
 
     fun findByType(type: Type): Schedule?
