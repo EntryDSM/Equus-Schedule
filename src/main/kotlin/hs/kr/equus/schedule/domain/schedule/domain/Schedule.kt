@@ -9,7 +9,8 @@ class Schedule(
     @Id
     val id: Int = 0,
 
-    @Enumerated(EnumType.STRING) @Column(length = 19, unique = true, nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(length = 19, unique = true, nullable = false)
     val type: Type,
 
     @Column(nullable = false)
