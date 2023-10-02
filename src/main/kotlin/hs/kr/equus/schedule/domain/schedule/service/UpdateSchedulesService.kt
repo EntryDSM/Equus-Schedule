@@ -15,7 +15,7 @@ class UpdateSchedulesService(
 ) {
     @Transactional
     fun execute(request: UpdateSchedulesRequest) {
-        if (request.schedules.isEmpty()) {
+        request.schedules.ifEmpty {
             throw InvalidScheduleRequestException
         }
         val scheduleDtoList: List<ScheduleDto> = request.schedules // todo 로직 변경 꼭 필요!!
