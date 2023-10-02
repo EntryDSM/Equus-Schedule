@@ -8,7 +8,6 @@ import hs.kr.equus.schedule.domain.schedule.presentation.dto.ScheduleDto
 import hs.kr.equus.schedule.domain.schedule.presentation.dto.response.SchedulesResponse
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
-import java.util.stream.Collectors
 
 @Service
 class QuerySchedulesService(
@@ -18,9 +17,8 @@ class QuerySchedulesService(
     fun execute(): SchedulesResponse {
         return SchedulesResponse(
             schedules = (
-                scheduleRepository.findAllBy().stream()
+                scheduleRepository.findAllBy()
                     .map { schedule -> ScheduleDto(schedule.type, schedule.date) }
-                    .collect(Collectors.toList())
                 ),
             currentStatus = getCurrentStatus()
         )
