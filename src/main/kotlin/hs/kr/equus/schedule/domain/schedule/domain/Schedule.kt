@@ -2,11 +2,11 @@ package hs.kr.equus.schedule.domain.schedule.domain
 
 import hs.kr.equus.schedule.domain.schedule.domain.types.Type
 import java.time.LocalDateTime
+import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.EnumType
 import javax.persistence.Enumerated
 import javax.persistence.Id
-import javax.persistence.Column
 
 @Entity(name = "tbl_schedule")
 class Schedule(
