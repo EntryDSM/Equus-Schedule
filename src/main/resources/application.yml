@@ -1,24 +1,16 @@
 spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ${MYSQL_URL}
-    username: ${MYSQL_USERNAME}
-    password: ${MYSQL_PASSWORD}
-    hikari:
-      maxLifetime: 580000
+  config:
+    import: "optional:configserver:${CLOUD_CONFIG_IMPORT_URL}"
+  cloud:
+    config:
+      name: schedule
+      profile: ${SCHEDULE_PROFILE}
 
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: ${SHOW_SQL:true}
-    properties:
-      hibernate:
-        format_sql: ${FORMAT_SQL:true}
-    open-in-view: false
-    database: mysql
-    
-auth:
-  jwt:
-    secretKey: ${JWT_SECRET_KEY:dGVzdA==}
-    header: ${JWT_HEADER:Authorization}
-    prefix: ${JWT_PREFIX:Bearer}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, refresh, busrefresh
+      base-path: /
+      path-mapping:
+        health: /
