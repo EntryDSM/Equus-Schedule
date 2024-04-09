@@ -58,6 +58,8 @@ dependencies {
     implementation(Dependencies.JWT)
 
     implementation(Dependencies.CLOUD_CONFIG)
+
+    implementation(Dependencies.ACTUATOR)
 }
 
 tasks.withType<KotlinCompile> {

@@ -32,4 +32,6 @@ object Dependencies {
     const val CLOUD_CONFIG = "org.springframework.cloud:spring-cloud-config-client"
 
     const val SPRING_CLOUD = "org.springframework.cloud:spring-cloud-dependencies:${DependencyVersions.SPRING_CLOUD_VERSION}"
+
+    const val ACTUATOR = "org.springframework.boot:spring-boot-starter-actuator"
 }
