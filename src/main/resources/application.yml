@@ -4,7 +4,7 @@ spring:
   cloud:
     config:
       name: schedule
-      profile: dev
+      profile: ${SCHEDULE_PROFILE}
 
 management:
   endpoints:
