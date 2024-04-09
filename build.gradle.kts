@@ -22,6 +22,12 @@ repositories {
     maven { url = uri("https://repo.spring.io/snapshot") }
 }
 
+dependencyManagement {
+    imports {
+        mavenBom(Dependencies.SPRING_CLOUD)
+    }
+}
+
 dependencies {
 
     // Database
@@ -50,6 +56,8 @@ dependencies {
 
     // Jwt
     implementation(Dependencies.JWT)
+
+    implementation(Dependencies.CLOUD_CONFIG)
 }
 
 tasks.withType<KotlinCompile> {

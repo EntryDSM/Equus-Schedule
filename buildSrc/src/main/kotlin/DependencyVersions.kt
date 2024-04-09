@@ -4,4 +4,5 @@ object DependencyVersions {
     const val MYSQL = "8.0.28"
     const val SENTRY_VERSION = "6.2.1"
     const val JWT_VERSION = "0.9.1"
+    const val SPRING_CLOUD_VERSION = "2021.0.1"
 }

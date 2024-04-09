@@ -1,10 +1,10 @@
 spring:
   config:
-    import: "optional:configserver:${CLOUD_CONFIG_IMPORT_URL}"
+    import: "optional:configserver:https://stag-server.xquare.app/equus-config/"
   cloud:
     config:
       name: schedule
-      profile: ${SCHEDULE_PROFILE}
+      profile: dev
 
 management:
   endpoints:
