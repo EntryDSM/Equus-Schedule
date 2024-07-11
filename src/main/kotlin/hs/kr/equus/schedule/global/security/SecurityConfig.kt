@@ -1,8 +1,10 @@
 package hs.kr.equus.schedule.global.security
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import hs.kr.equus.schedule.global.security.jwt.UserRole
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.web.SecurityFilterChain
@@ -26,6 +28,8 @@ class SecurityConfig(
         http.authorizeRequests()
             .requestMatchers(CorsUtils::isCorsRequest)
             .permitAll()
+            .antMatchers(HttpMethod.PATCH, "/schedule")
+            .hasRole(UserRole.ADMIN.name)
             .anyRequest()
             .permitAll()
 
