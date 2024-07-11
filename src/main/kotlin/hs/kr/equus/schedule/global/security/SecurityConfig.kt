@@ -28,7 +28,7 @@ class SecurityConfig(
         http.authorizeRequests()
             .requestMatchers(CorsUtils::isCorsRequest)
             .permitAll()
-            .antMatchers(HttpMethod.PATCH, "/schedule")
+            .antMatchers(HttpMethod.PATCH, "/schedule/**")
             .hasRole(UserRole.ADMIN.name)
             .anyRequest()
             .permitAll()
