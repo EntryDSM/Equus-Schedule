@@ -3,6 +3,7 @@ package hs.kr.equus.schedule.domain.schedule.service
 import hs.kr.equus.schedule.domain.schedule.domain.Schedule
 import hs.kr.equus.schedule.domain.schedule.domain.repository.ScheduleRepository
 import hs.kr.equus.schedule.domain.schedule.domain.types.Type
+import hs.kr.equus.schedule.domain.schedule.exception.InvalidScheduleSequenceException
 import hs.kr.equus.schedule.domain.schedule.facade.ScheduleFacade
 import hs.kr.equus.schedule.domain.schedule.presentation.dto.ScheduleDto
 import hs.kr.equus.schedule.domain.schedule.presentation.dto.response.SchedulesResponse
@@ -35,7 +36,7 @@ class QuerySchedulesService(
 
         return when {
             now.isBefore(startDate) -> "NOT_APPLICATION_PERIOD"
-            now.isEqual(startDate) -> firstAnnounce.type.toString()
+            now.isAfter(startDate) && now.isBefore(firstAnnounce.date) -> "APPLICATION_PERIOD"
             now.isBefore(firstAnnounce.date) -> "BEFORE_FIRST_ANNOUNCEMENT"
             now.isEqual(firstAnnounce.date) -> firstAnnounce.type.toString()
             now.isBefore(interview.date) -> "BEFORE_INTERVIEW"
@@ -43,7 +44,7 @@ class QuerySchedulesService(
             now.isBefore(secondAnnounce.date) -> "BEFORE_SECOND_ANNOUNCEMENT"
             now.isEqual(secondAnnounce.date) -> secondAnnounce.type.toString()
             now.isAfter(endDate) -> "END"
-            else -> "APPLICATION_PERIOD"
+            else -> throw InvalidScheduleSequenceException
         }
     }
 }
