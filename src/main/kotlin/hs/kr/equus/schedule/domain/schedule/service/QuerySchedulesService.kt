@@ -36,7 +36,7 @@ class QuerySchedulesService(
 
         return when {
             now.isBefore(startDate) -> "NOT_APPLICATION_PERIOD"
-            now.isAfter(startDate) && now.isBefore(firstAnnounce.date) -> "APPLICATION_PERIOD"
+            now.isAfter(startDate) && now.isBefore(endDate) -> "APPLICATION_PERIOD"
             now.isAfter(endDate) && now.isBefore(firstAnnounce.date) -> "BEFORE_FIRST_ANNOUNCEMENT"
             now.isEqual(firstAnnounce.date) -> firstAnnounce.type.toString()
             now.isBefore(interview.date) -> "BEFORE_INTERVIEW"
