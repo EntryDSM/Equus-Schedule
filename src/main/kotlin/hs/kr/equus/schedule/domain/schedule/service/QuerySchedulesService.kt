@@ -37,13 +37,13 @@ class QuerySchedulesService(
         return when {
             now.isBefore(startDate) -> "NOT_APPLICATION_PERIOD"
             now.isAfter(startDate) && now.isBefore(firstAnnounce.date) -> "APPLICATION_PERIOD"
-            now.isBefore(firstAnnounce.date) -> "BEFORE_FIRST_ANNOUNCEMENT"
+            now.isAfter(endDate) && now.isBefore(firstAnnounce.date) -> "BEFORE_FIRST_ANNOUNCEMENT"
             now.isEqual(firstAnnounce.date) -> firstAnnounce.type.toString()
             now.isBefore(interview.date) -> "BEFORE_INTERVIEW"
             now.isEqual(interview.date) -> interview.type.toString()
             now.isBefore(secondAnnounce.date) -> "BEFORE_SECOND_ANNOUNCEMENT"
             now.isEqual(secondAnnounce.date) -> secondAnnounce.type.toString()
-            now.isAfter(endDate) -> "END"
+            now.isAfter(secondAnnounce.date) -> "END"
             else -> throw InvalidScheduleSequenceException
         }
     }
